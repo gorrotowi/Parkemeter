@@ -1,8 +1,10 @@
 package com.gorrotowi.parkemeter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.view.View;
 
 import com.gorrotowi.parkemeter.customelements.TextViewBariol;
 
@@ -20,6 +22,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
         txtWelcome.setText(Html.fromHtml(message));
 
+    }
+
+    public void passtomaps(View v) {
+        startActivity(new Intent(WelcomeActivity.this, MapParkerActivity.class));
     }
 
 }

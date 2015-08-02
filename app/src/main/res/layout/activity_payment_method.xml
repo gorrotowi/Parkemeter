@@ -39,10 +39,10 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="95dp"
+            android:layout_height="75dp"
             android:layout_below="@+id/imgToolbarHeader"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="-50dp"
+            android:layout_marginTop="-40dp"
             android:contentDescription="@string/hello_world"
             android:src="@drawable/minicard" />
 

@@ -61,6 +61,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:background="@color/teal"
+        android:onClick="passtomaps"
         android:text="@string/next"
         android:textColor="@color/blank_transparent"
         android:textSize="26sp"

@@ -78,6 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
                 Toast.makeText(RegisterActivity.this, "Algo ocurrio mal, intenta de nuevo", Toast.LENGTH_SHORT).show();
             }
         });
