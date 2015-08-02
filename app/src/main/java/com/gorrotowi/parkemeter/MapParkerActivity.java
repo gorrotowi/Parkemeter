@@ -1,23 +1,47 @@
 package com.gorrotowi.parkemeter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.gorrotowi.parkemeter.customelements.TextViewBariol;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class MapParkerActivity extends AppCompatActivity implements LocationListener {
 
@@ -25,6 +49,14 @@ public class MapParkerActivity extends AppCompatActivity implements LocationList
     LocationManager locationManager;
     GoogleMap googleMap;
     String provider;
+    FloatingActionButton fabButton;
+    LinearLayout contentDetail;
+    TextViewBariol txtStreet;
+    JsonObjectRequest jsonRegisterUser;
+    RequestQueue rq;
+    MaterialDialog.Builder progressDialogBuild;
+    MaterialDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +68,28 @@ public class MapParkerActivity extends AppCompatActivity implements LocationList
         toolbar.setTitleTextColor(getResources().getColor(R.color.icons));
         setSupportActionBar(toolbar);
 
+        fabButton = (FloatingActionButton) findViewById(R.id.fabMapWallet);
+        contentDetail = (LinearLayout) findViewById(R.id.layoutMapDetail);
+        txtStreet = (TextViewBariol) findViewById(R.id.txtMapNameStreet);
+
+        rq = Volley.newRequestQueue(this);
+
+        progressDialogBuild = new MaterialDialog.Builder(MapParkerActivity.this)
+                .content(R.string.wait_dialog)
+                .cancelable(false)
+                .progress(true, 0);
+
+        progressDialog = progressDialogBuild.build();
+        progressDialog.show();
+
+        fabButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MapParkerActivity.this, PayParkemeterActivity.class));
+            }
+        });
+
         googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-//        googleMap = ((MapFragment) getMapfra()
-//                .findFragmentById(R.id.map)).getMap();
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -58,13 +109,6 @@ public class MapParkerActivity extends AppCompatActivity implements LocationList
 
         try {
             Location location = locationManager.getLastKnownLocation(provider);
-            location.getLongitude();
-            location.getAltitude();
-            location.getLatitude();
-            //Log.e("Log location", location.toString());
-//            Log.e("latitude", location.getLatitude() + "");
-//            Log.e("longitud", location.getLongitude() + "");
-//            Log.e("altitude", location.getAltitude() + "");
             onLocationChanged(location);
 
         } catch (Exception e) {
@@ -73,6 +117,58 @@ public class MapParkerActivity extends AppCompatActivity implements LocationList
         }
 
 
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Geocoder geocoder;
+                List<Address> addresses;
+                geocoder = new Geocoder(MapParkerActivity.this, Locale.getDefault());
+                try {
+                    addresses = geocoder.getFromLocation(marker.getPosition().latitude, marker.getPosition().longitude, 1);
+                    String address = addresses.get(0).getAddressLine(0);
+                    txtStreet.setText(address);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                fabButton.setVisibility(View.VISIBLE);
+                contentDetail.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+
+        jsonRegisterUser = new JsonObjectRequest(Request.Method.GET, "http://parqueamesta-49762.onmodulus.net/v1/geolocs", new JSONObject(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                progressDialog.hide();
+                parseParkemeters(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
+                Toast.makeText(MapParkerActivity.this, "Algo ocurrio mal, intenta de nuevo", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        rq.add(jsonRegisterUser);
+
+
+    }
+
+    private void parseParkemeters(JSONObject response) {
+        try {
+            progressDialog.hide();
+            JSONArray jsonArrayParks = response.getJSONArray("features");
+
+            for (int i = 0; i < jsonArrayParks.length(); i++) {
+                Double lat = Double.parseDouble(jsonArrayParks.getJSONObject(i).getJSONObject("properties").getString("POINT_Y"));
+                Double lng = Double.parseDouble(jsonArrayParks.getJSONObject(i).getJSONObject("properties").getString("POINT_X"));
+                googleMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -99,10 +195,9 @@ public class MapParkerActivity extends AppCompatActivity implements LocationList
 
     @Override
     public void onLocationChanged(Location location) {
-        Double latitude, longitud, altitud;
+        Double latitude, longitud;
         latitude = (double) (location.getLatitude());
         longitud = (double) (location.getLongitude());
-        altitud = (double) (location.getAltitude());
 
         LatLng localizacion = new LatLng(latitude, longitud);
 

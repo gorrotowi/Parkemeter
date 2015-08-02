@@ -38,4 +38,5 @@
     <string name="welcome_message">Felicidades, haz completado con exito tu registro. Este es tu código ID, nos tomamos la consideración de enviar una copia al correo</string>
     <string name="title_activity_map_parker">MapParkerActivity</string>
     <string name="name_app">Parkeando</string>
+    <string name="title_activity_pay_parkemeter">PayParkemeterActivity</string>
 </resources>

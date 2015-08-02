@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registerActivity(View v) {
-        startActivity(new Intent(MainActivity.this, RegisterActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
     }
 
     public void loginActivity(View v) {

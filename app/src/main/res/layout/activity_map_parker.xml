@@ -18,4 +18,42 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
 
+    <LinearLayout
+        android:id="@+id/layoutMapDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blank_transparent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <com.gorrotowi.parkemeter.customelements.TextViewBariol
+            android:id="@+id/txtMapNameStreet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name of parkimeter"
+            android:textColor="@color/primary_text"
+            android:textSize="18sp" />
+
+        <com.gorrotowi.parkemeter.customelements.TextViewBariol
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8:00 a 20:00"
+            android:textColor="@color/primary_text"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabMapWallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layoutMapDetail"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-30dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:src="@drawable/pay_blanco"
+        android:visibility="gone" />
+
 </RelativeLayout>

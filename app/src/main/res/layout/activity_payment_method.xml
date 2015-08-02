@@ -95,8 +95,10 @@
                     android:id="@+id/edtxPaymentMethodNumberCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:hint="@string/number_of_card" />
+                    android:hint="@string/number_of_card"
+                    android:inputType="number"
+                    android:maxLength="16"
+                    android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
@@ -116,7 +118,8 @@
                         android:digits="12367890"
                         android:hint="@string/month"
                         android:inputType="numberDecimal"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:maxLines="1" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -131,7 +134,8 @@
                         android:digits="12367890"
                         android:hint="@string/year"
                         android:inputType="numberDecimal"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:maxLines="1" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -147,7 +151,8 @@
                         android:digits="12367890"
                         android:hint="@string/cvv"
                         android:inputType="numberDecimal"
-                        android:maxLength="3" />
+                        android:maxLength="3"
+                        android:maxLines="1" />
 
                 </android.support.design.widget.TextInputLayout>
 
