@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Parkemeter</string>
 
+    <string name="public_key">sbpb_ZDY5YzhmYmYtNmM4Ny00NGQ3LWEzM2EtYzdjZmI3Yjg5MWI4</string>
+    <string name="secret_key">pCHHKBWhdzVXuEbMkdqmdY/4Gtcw3E3TTlQAtU7UNq55YFFQL0ODSXAOkNtXTToq</string>
+
+    <string name="base_url">http://parqueamesta-49762.onmodulus.net/v1/</string>
+    <string name="url_users">users/</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="register">Registro</string>
@@ -11,4 +17,23 @@
     <string name="pass">Contraseña</string>
     <string name="passconfirm">Confirmar contraseña</string>
     <string name="matricula">Matricula del auto</string>
+    <string name="country_code">Código de pais</string>
+    <string name="mx_code">+52</string>
+    <string name="fake_number">5530402030</string>
+    <string name="phone">Teléfono</string>
+    <string name="next">siguiente</string>
+    <string name="title_activity_payment_method">PaymentMethod</string>
+    <string name="ingress_card">O ingresa una tarjeta de credito o debito</string>
+    <string name="pay_more_easy">Pagas mas facil ahora con</string>
+    <string name="number_of_card">Numero de tarjeta de credito / debito</string>
+    <string name="month">MM</string>
+    <string name="year">AA</string>
+    <string name="cvv">CVV</string>
+    <string name="wait_dialog">Espere un momento</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="pay_method">Metodo de pago</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="excelent">excelente</string>
+    <string name="welcome_to">Bienvenido a ....</string>
+    <string name="welcome_message">Felicidades, haz completado con exito tu registro. Este es tu código ID, nos tomamos la consideración de enviar una copia al correo</string>
 </resources>

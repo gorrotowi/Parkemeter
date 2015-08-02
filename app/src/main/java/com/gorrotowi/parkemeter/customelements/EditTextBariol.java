@@ -35,7 +35,7 @@ public class EditTextBariol extends EditText {
     }
 
     private void initStyle() {
-        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Bariol_Regular.otf");
+        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Montserrat-Regular.otf");
         this.setTypeface(tf);
     }
 
@@ -43,19 +43,19 @@ public class EditTextBariol extends EditText {
 
         switch (font) {
             case 0:
-                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Bariol_Regular.otf");
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Montserrat-Regular.otf");
                 this.setTypeface(tf);
                 break;
             case 1:
-                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Bariol_Light.otf");
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Montserrat-Light.otf");
                 this.setTypeface(tf);
                 break;
             case 2:
-                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Bariol_Bold.otf");
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Montserrat-Bold.otf");
                 this.setTypeface(tf);
                 break;
             default:
-                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Bariol_Regular.otf");
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Montserrat-Regular.otf");
                 this.setTypeface(tf);
                 break;
         }

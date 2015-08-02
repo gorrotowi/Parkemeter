@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gorrotowi.parkemeter.WelcomeActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+
+        <com.gorrotowi.parkemeter.customelements.TextViewBariol
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:text="@string/excelent"
+            android:textColor="@color/icons"
+            android:textSize="18sp"
+            app:font_type="bold" />
+
+        <ImageView
+            android:id="@+id/imgToolbarHeader"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/toolbar"
+            android:contentDescription="@string/hello_world"
+            android:scaleType="centerCrop"
+            android:src="@drawable/header_toolbar" />
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:layout_below="@+id/imgToolbarHeader"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-50dp"
+            android:contentDescription="@string/hello_world"
+            android:src="@drawable/check" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ScrollView>
+
+    <com.gorrotowi.parkemeter.customelements.ButtonBariol
+        android:id="@+id/btnWelcomeNext"
+        style="?attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/teal"
+        android:text="@string/next"
+        android:textColor="@color/blank_transparent"
+        android:textSize="26sp"
+        app:font_type="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnWelcomeNext"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin">
+
+        <com.gorrotowi.parkemeter.customelements.TextViewBariol
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_to"
+            android:textColor="@color/teal"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="@string/hello_world"
+            android:src="@drawable/qr" />
+
+        <com.gorrotowi.parkemeter.customelements.TextViewBariol
+            android:id="@+id/txtWelcomeMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/welcome_message"
+            android:textColor="@color/primary" />
+
+    </LinearLayout>
+
+</RelativeLayout>

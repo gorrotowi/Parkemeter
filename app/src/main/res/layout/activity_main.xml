@@ -3,41 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimary"
+    android:background="@drawable/background_one"
+    android:paddingTop="105dp"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/imgSplash"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/hello_world"
-        android:src="@drawable/abc_btn_check_material" />
 
     <com.gorrotowi.parkemeter.customelements.TextViewBariol
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imgSplash"
         android:layout_centerHorizontal="true"
         android:text="@string/hello_world"
         android:textColor="@color/icons"
         android:textSize="24sp"
-        app:font_type="bold" />
+        app:font_type="regular" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/icons"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <com.gorrotowi.parkemeter.customelements.ButtonBariol
             android:id="@+id/btnSplashRegister"
             style="?attr/buttonBarStyle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="2"
+            android:background="@color/blank_transparent"
+            android:textColor="@color/primary_transparent"
             android:onClick="registerActivity"
             android:text="@string/register" />
 
@@ -45,8 +39,10 @@
             android:id="@+id/btnSplashLogin"
             style="?attr/buttonBarStyle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="2"
+            android:textColor="@color/blank_transparent"
+            android:background="@color/primary_transparent"
             android:text="@string/login" />
 
     </LinearLayout>

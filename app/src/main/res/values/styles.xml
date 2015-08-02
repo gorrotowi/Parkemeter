@@ -11,6 +11,8 @@
         <item name="android:divider">@color/divider</item>
         <item name="android:textColorPrimary">@color/primary_text</item>
         <item name="android:textColorSecondary">@color/secondary_text</item>
+        <item name="colorControlActivated">@color/primary_text</item>
+        <item name="colorControlNormal">@color/secondary_text</item>
 
     </style>
 
@@ -25,7 +27,7 @@
         <item name="android:textColorPrimary">@color/primary_text</item>
         <item name="android:textColorSecondary">@color/secondary_text</item>
         <item name="colorControlActivated">@color/icons</item>
-        <item name="colorControlNormal">@color/icons_trans</item>
+        <item name="colorControlNormal">@color/blank_transparent</item>
 
     </style>
 
